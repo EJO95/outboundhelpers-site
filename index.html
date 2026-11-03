@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlueCollarAI — cold outreach infrastructure that actually lands</title>
+<meta name="description" content="BlueCollarAI builds cold email infrastructure that reaches real inboxes: domain setup, verified lists, sequenced sending, and reply handling for B2B teams.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-alt:#f4f6f8;
+    --ink:#161b22;
+    --ink-soft:#3f4852;
+    --line:#dde2e7;
+    --accent:#1d4ed8;
+    --accent-dark:#1534a0;
+    --space-1:8px;
+    --space-2:16px;
+    --space-3:24px;
+    --space-4:32px;
+    --space-5:48px;
+    --space-6:64px;
+    --max:1100px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+    font-size:17px;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:var(--accent);text-decoration:underline;}
+  a:hover{color:var(--accent-dark);}
+  a:focus-visible,button:focus-visible{
+    outline:3px solid var(--accent);
+    outline-offset:2px;
+    border-radius:2px;
+  }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 var(--space-3);
+  }
+  header.site{
+    border-bottom:1px solid var(--line);
+    padding:var(--space-3) 0;
+  }
+  header.site .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:var(--space-2);
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:var(--space-2);
+  }
+  .brand .wordmark{
+    font-size:1.25rem;
+    font-weight:700;
+    color:var(--ink);
+    text-decoration:none;
+    letter-spacing:-0.01em;
+  }
+  .brand .tagline{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+  nav.site-nav ul{
+    list-style:none;
+    display:flex;
+    gap:var(--space-4);
+    margin:0;
+    padding:0;
+    flex-wrap:wrap;
+  }
+  nav.site-nav a{
+    color:var(--ink);
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  nav.site-nav a:hover{
+    color:var(--accent);
+    text-decoration:underline;
+  }
+  main{display:block;}
+  section{
+    padding:var(--space-6) 0;
+  }
+  section.alt{background:var(--bg-alt);}
+  section + section{border-top:1px solid var(--line);}
+  h1{
+    font-size:2.4rem;
+    line-height:1.15;
+    margin:0 0 var(--space-3);
+    letter-spacing:-0.01em;
+  }
+  h2{
+    font-size:1.6rem;
+    margin:0 0 var(--space-4);
+    letter-spacing:-0.01em;
+  }
+  h3{
+    font-size:1.1rem;
+    margin:0 0 var(--space-2);
+  }
+  p{margin:0 0 var(--space-3);color:var(--ink-soft);}
+  .hero p.lede{
+    font-size:1.15rem;
+    max-width:620px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--space-3);
+    align-items:center;
+    margin-top:var(--space-4);
+  }
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    padding:14px 28px;
+    border-radius:6px;
+    border:2px solid var(--accent);
+  }
+  .btn:hover{
+    background:var(--accent-dark);
+    border-color:var(--accent-dark);
+    color:#fff;
+  }
+  .btn-secondary{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:600;
+    padding:14px 8px;
+  }
+  ol.steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:var(--space-4);
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  ol.steps li{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:var(--space-4);
+  }
+  ol.steps .num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    font-weight:700;
+    margin-bottom:var(--space-2);
+    font-size:0.95rem;
+  }
+  ol.steps p{margin-bottom:0;}
+  .cards{
+    display:grid;
+    gap:var(--space-4);
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:var(--space-4);
+  }
+  .card p{margin-bottom:0;}
+  ul.principles{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:var(--space-3);
+  }
+  ul.principles li{
+    padding-left:var(--space-4);
+    position:relative;
+    color:var(--ink-soft);
+  }
+  ul.principles li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .contact-box{
+    text-align:center;
+  }
+  .contact-box .btn{font-size:1.05rem;}
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:var(--space-4) 0;
+  }
+  footer.site .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:var(--space-2);
+    color:var(--ink-soft);
+    font-size:0.9rem;
+  }
+  footer.site a{color:var(--ink-soft);}
+  footer.site nav ul{
+    list-style:none;
+    display:flex;
+    gap:var(--space-3);
+    margin:0;
+    padding:0;
+  }
+  @media (max-width:700px){
+    h1{font-size:1.9rem;}
+    ol.steps{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    section{padding:var(--space-5) 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <a href="#top" class="wordmark">BlueCollarAI</a>
+      <span class="tagline">Cold outreach infrastructure, built right.</span>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#who-its-for">Who it's for</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Cold email that reaches real inboxes, not spam folders.</h1>
+      <p class="lede">
+        BlueCollarAI sets up the domain, mailbox, and sending infrastructure behind
+        B2B cold outreach — properly authenticated, properly warmed, and properly
+        monitored — so the emails your team sends actually land where a person will
+        read them.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="mailto:hello@outboundhelpers.com">Email hello@outboundhelpers.com</a>
+        <a class="btn-secondary" href="#how-it-works">See how it works →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="how-it-works">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li>
+          <span class="num">1</span>
+          <h3>Domain & mailbox setup</h3>
+          <p>
+            We configure sending domains and mailboxes with correct SPF, DKIM, and
+            DMARC records from day one, so your mail is authenticated before a
+            single message goes out.
+          </p>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <h3>List building & verification</h3>
+          <p>
+            Prospect lists are built against the criteria you give us and run
+            through verification to remove invalid, risky, or undeliverable
+            addresses before anything is sent.
+          </p>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <h3>Sequenced sending with warmup</h3>
+          <p>
+            New domains and mailboxes are warmed up gradually. Sending volume and
+            pacing ramp up over time, following patterns that mailbox providers
+            recognize as normal, human-run outreach.
+          </p>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <h3>Reply handling & reporting</h3>
+          <p>
+            Replies, bounces, and opt-outs are tracked and routed. You get a clear,
+            regular report on what was sent, what landed, and who replied.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="who-its-for">
+    <div class="wrap">
+      <h2>Who it's for</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>B2B service businesses</h3>
+          <p>
+            Teams selling a defined service to other businesses, who need a
+            reliable way to start conversations with prospects who haven't heard
+            of them yet.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Agencies</h3>
+          <p>
+            Agencies running outbound for themselves or on behalf of clients, who
+            need infrastructure that holds up across multiple domains and sending
+            identities.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Founders doing founder-led sales</h3>
+          <p>
+            Founders who want to run their own outbound motion directly, without
+            getting buried in deliverability problems and bounced domains.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="principles">
+    <div class="wrap">
+      <h2>Principles</h2>
+      <ul class="principles">
+        <li>No scraped or stolen lists — lists are built and verified against criteria you set.</li>
+        <li>No spam tactics. Volume and pacing are set to protect deliverability and sender reputation, not to maximize blast size.</li>
+        <li>Opt-outs are honored promptly and permanently.</li>
+        <li>Sending practices are CAN-SPAM and GDPR-aware, including accurate sender identification and a working way to opt out.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-box">
+      <h2>Contact</h2>
+      <p>
+        Tell us a bit about what you're selling and who you want to reach.
+        A short reply is enough to start.
+      </p>
+      <a class="btn" href="mailto:hello@outboundhelpers.com">hello@outboundhelpers.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 BlueCollarAI</div>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
